@@ -31,7 +31,9 @@ session_start();
         }
         else {
             echo "<span style='color: green;'>Angemeldet als: " . $_SESSION["uname"] . "</span><br>";
-            echo "<a href='main.php?action=logout'>Logout</a><br><br>";
+            echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
+            echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button><br><br>";
+            if($_SESSION["power"] <= 1) echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button><br><br>";
         }
 
         if(isset($_GET["action"])) {
@@ -48,9 +50,28 @@ session_start();
                     echo "<h2>Alle Bücher</h2>";
                     include("control/listBooks.php");
                     break;
+                case "addb":
+                    echo "<h2>Buch zu Bestand hinzufügen</h2>";
+                    include("control/addBook.php");
+                    break;
             }
         }
         ?>
     </div>
+
+    <script>
+        function list()
+        {
+            window.location.href = "main.php?action=list";
+        }
+        function add()
+        {
+            window.location.href = "main.php?action=addb";
+        }
+        function logout()
+        {
+            window.location.href = "main.php?action=logout";
+        }
+    </script>
 </body>
 </html>

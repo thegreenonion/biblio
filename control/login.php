@@ -1,8 +1,8 @@
 <br>
 <br>
 <form method="post">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="username" placeholder="Benutzername" required>
+    <input type="password" name="password" placeholder="Passwort" required>
     <button class="btn btn-success" type="submit">Login</button>
 </form>
 

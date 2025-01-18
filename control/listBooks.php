@@ -2,7 +2,7 @@
 include("conn.php");
 if(!isset($_SESSION["uid"])) {
     echo "<p style='color: red;'>Bitte zuerst anmelden!</p>";
-    die();
+    exit();
 }
 
 $sql = "SELECT * FROM books";
