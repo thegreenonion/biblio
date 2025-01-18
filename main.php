@@ -38,6 +38,7 @@ session_start();
         }
 
         if(isset($_GET["action"])) {
+            echo "<div style='border: 1px solid black; padding: 10px; margin-right: 10px;'>";
             switch($_GET["action"]) {
                 case "":
                     break;
@@ -64,6 +65,7 @@ session_start();
                         break;
                 }
             }
+            echo "</div>";
         }
         ?>
     </div>
