@@ -8,9 +8,10 @@ if(!isset($_SESSION["uid"])) {
 $sql = "SELECT * FROM books";
 $result = $conn->query($sql);
 echo "<table class='table table-bordered>'";
-echo "<tr><th>Titel</th><th>Autor</th><th>Seiten</th></tr>";
+echo "<tr><th>Titel</th><th>Autor</th><th>Seiten</th><th>Sprache</th></tr>";
 foreach($result as $row)
 {
-    echo "<tr><td>" . $row["title"] . "</td><td>" . $row["author"] . "</td><td>" . $row["pages"] . "</td></tr>";
+    echo "<tr><td>" . $row["title"] . "</td><td>" . $row["author"] . "</td><td>" . $row["pages"] . "</td><td>" .
+    $row["lang"] . "</tr>";
 }
 echo "</table>";
