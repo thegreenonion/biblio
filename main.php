@@ -27,11 +27,11 @@ session_start();
     <div style="margin-left: 10px;">
         <?php
         if(!isset($_SESSION["uid"])) {
-            echo "<a href='main.php?action=login'>Login</a>";
+            echo "<a href='main.php?action=login'>Login</a><br><br>";
         }
         else {
             echo "<span style='color: green;'>Angemeldet als: ".$_SESSION["uname"]."</span><br>";
-            echo "<a href='main.php?action=logout'>Logout</a>";
+            echo "<a href='main.php?action=logout'>Logout</a><br><br>";
         }
 
         if(isset($_GET["action"])) {
@@ -43,6 +43,10 @@ session_start();
                     break;
                 case "logout":
                     include("control/logout.php");
+                    break;
+                case "list":
+                    echo "<h2>Alle Bücher</h2>";
+                    include("control/listBooks.php");
                     break;
             }
         }
