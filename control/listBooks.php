@@ -14,4 +14,3 @@ foreach($result as $row)
     echo "<tr><td>" . $row["title"] . "</td><td>" . $row["author"] . "</td><td>" . $row["pages"] . "</td></tr>";
 }
 echo "</table>";
-?>
