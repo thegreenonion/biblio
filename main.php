@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,20 +15,37 @@
         h1 {
             margin-top: 5px;
         }
+        ml {
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
     <a href="main.php" style="color: black;">
         <h1>biblio Bibliothek-Verwaltungsprogramm</h1>
     </a>
-    <a href="main.php?action=login">Anmelden</a>
+    <div style="margin-left: 10px;">
+        <?php
+        if(!isset($_SESSION["uid"])) {
+            echo "<a href='main.php?action=login'>Login</a>";
+        }
+        else {
+            echo "<span style='color: green;'>Angemeldet als: ".$_SESSION["uname"]."</span><br>";
+            echo "<a href='main.php?action=logout'>Logout</a>";
+        }
+        ?>
+        
+    </div>
     <?php
     if(isset($_GET["action"])) {
         switch($_GET["action"]) {
+            case "":
+                break;
             case "login":
                 include("login.php");
                 break;
-            case "":
+            case "logout":
+                include("logout.php");
                 break;
         }
     }
