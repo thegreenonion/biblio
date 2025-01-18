@@ -33,22 +33,20 @@ session_start();
             echo "<span style='color: green;'>Angemeldet als: ".$_SESSION["uname"]."</span><br>";
             echo "<a href='main.php?action=logout'>Logout</a>";
         }
-        ?>
-        
-    </div>
-    <?php
-    if(isset($_GET["action"])) {
-        switch($_GET["action"]) {
-            case "":
-                break;
-            case "login":
-                include("login.php");
-                break;
-            case "logout":
-                include("logout.php");
-                break;
+
+        if(isset($_GET["action"])) {
+            switch($_GET["action"]) {
+                case "":
+                    break;
+                case "login":
+                    include("control/login.php");
+                    break;
+                case "logout":
+                    include("control/logout.php");
+                    break;
+            }
         }
-    }
-    ?>
+        ?>
+    </div>
 </body>
 </html>
