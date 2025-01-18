@@ -60,7 +60,7 @@ session_start();
                         break;
                     case "search":
                         echo "<h2>Buch suchen</h2>";
-                        searchForm();
+                        include("control/searchBook.php");
                         break;
                 }
             }
@@ -84,11 +84,7 @@ session_start();
     </script>
 
     <?php
-    function searchForm() {
-        echo "<form method='post' action='control/searchBook.php'>";
-        echo "<input type='text' name='search' placeholder='Titel' required>";
-        echo "<button class='btn btn-success' type='submit'>Suchen</button>";
-    }
+
     ?>
 </body>
 </html>
