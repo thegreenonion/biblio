@@ -14,7 +14,7 @@ if(!isset($_SESSION["uid"])) {
 if(isset($_POST["search"])) {
     $sql = "SELECT * FROM books WHERE title LIKE ?";
     $stmt = $conn->prepare($sql);
-    $stmt->execute(['%' . $_POST["search"] . '%']);
+    $stmt->execute(['%' . htmlspecialchars($_POST["search"]) . '%']);
     $result = $stmt->fetchAll();
     echo "<table class='table table-bordered>'";
     echo "<tr><th>Titel</th><th>Autor</th><th>Seiten</th><th>Sprache</th></tr>";

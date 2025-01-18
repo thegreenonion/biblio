@@ -9,8 +9,8 @@
 <?php
 include("conn.php");
 if(isset($_POST["username"]) && isset($_POST["password"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
     $sql = "SELECT * FROM user WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$username, $password]);

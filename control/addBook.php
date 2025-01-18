@@ -17,9 +17,9 @@ if(!($_SESSION["power"] <= 1)) {
 <?php
 include("conn.php");
 if(isset($_POST["title"]) && isset($_POST["author"]) && isset($_POST["pages"])) {
-    $title = $_POST["title"];
-    $author = $_POST["author"];
-    $pages = $_POST["pages"];
+    $title = htmlspecialchars($_POST["title"]);
+    $author = htmlspecialchars($_POST["author"]);
+    $pages = htmlspecialchars($_POST["pages"]);
     $sql = "INSERT INTO books (title, author, pages) VALUES (?,?,?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$title, $author, $pages]);
