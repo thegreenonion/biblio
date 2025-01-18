@@ -27,10 +27,10 @@ session_start();
     <div style="margin-left: 10px;">
         <?php
         if(!isset($_SESSION["uid"])) {
-            echo "<a href='main.php?action=login'>Login</a><br><br>";
+            echo "<a href='main.php?action=login'>Anmelden</a><br>";
         }
         else {
-            echo "<span style='color: green;'>Angemeldet als: ".$_SESSION["uname"]."</span><br>";
+            echo "<span style='color: green;'>Angemeldet als: " . $_SESSION["uname"] . "</span><br>";
             echo "<a href='main.php?action=logout'>Logout</a><br><br>";
         }
 

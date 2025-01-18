@@ -17,6 +17,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     if($stmt->rowCount() > 0) {
         $_SESSION["uid"] = $stmt->fetch()["uid"];
         $_SESSION["uname"] = $username;
+        $_SESSION["power"] = $stmt->fetch()["power"];
         echo "<script>window.location.href='main.php';</script>";
     }
     else {
