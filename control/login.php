@@ -15,9 +15,10 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$username, $password]);
     if($stmt->rowCount() > 0) {
-        $_SESSION["uid"] = $stmt->fetch()["uid"];
+        $result = $stmt->fetch();
+        $_SESSION["uid"] = $result["uid"];
         $_SESSION["uname"] = $username;
-        $_SESSION["power"] = $stmt->fetch()["power"];
+        $_SESSION["power"] = $result["power"];
         echo "<script>window.location.href='main.php';</script>";
     }
     else {
