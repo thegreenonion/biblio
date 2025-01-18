@@ -32,7 +32,8 @@ session_start();
         else {
             echo "<span style='color: green;'>Angemeldet als: " . $_SESSION["uname"] . "</span><br>";
             echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
-            echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button><br><br>";
+            echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button>";
+            echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=search()>Nach Buch suchen</button><br><br>";
             if($_SESSION["power"] <= 1) echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button><br><br>";
         }
 
@@ -46,32 +47,48 @@ session_start();
                 case "logout":
                     include("control/logout.php");
                     break;
-                case "list":
-                    echo "<h2>Alle Bücher</h2>";
-                    include("control/listBooks.php");
-                    break;
-                case "addb":
-                    echo "<h2>Buch zu Bestand hinzufügen</h2>";
-                    include("control/addBook.php");
-                    break;
+            }
+            if(isset($_SESSION["uid"])) {
+                switch($_GET["action"]) {
+                    case "list":
+                        echo "<h2>Alle Bücher</h2>";
+                        include("control/listBooks.php");
+                        break;
+                    case "addb":
+                        echo "<h2>Buch zu Bestand hinzufügen</h2>";
+                        include("control/addBook.php");
+                        break;
+                    case "search":
+                        echo "<h2>Buch suchen</h2>";
+                        searchForm();
+                        break;
+                }
             }
         }
         ?>
     </div>
 
     <script>
-        function list()
-        {
+        function list() {
             window.location.href = "main.php?action=list";
         }
-        function add()
-        {
+        function add() {
             window.location.href = "main.php?action=addb";
         }
-        function logout()
-        {
+        function logout() {
             window.location.href = "main.php?action=logout";
         }
+        function search() {
+            window.location.href = "main.php?action=search";
+        }
     </script>
+
+    <?php
+    function searchForm() {
+        echo "<form method='post' action='control/searchBook.php'>";
+        echo "<input type='text' name='search' placeholder='Titel' required>";
+        echo "<button class='btn btn-success' type='submit'>Suchen</button>";
+    }
+    ?>
 </body>
 </html>
