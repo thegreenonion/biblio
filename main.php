@@ -71,6 +71,11 @@ session_start();
                         echo "<h2>Exemplar hinzufügen</h2>";
                         include("control/addCopy.php");
                         break;
+                    case "addl":
+                        echo "<h2>Ausleihen</h2>";
+                        $_SESSION["bid"] = $_GET["bid"];
+                        include("control/addLoan.php");
+                        break;
                 }
             }
             echo "</div>";
