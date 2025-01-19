@@ -34,7 +34,11 @@ session_start();
             echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
             echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button>";
             echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=search()>Nach Buch suchen</button><br><br>";
-            if($_SESSION["power"] <= 1) echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button><br><br>";
+            if($_SESSION["power"] <= 1) {
+                echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button>";
+                echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=addc()>Exemplar hinzufügen</button><br><br>";
+            }
+
         }
 
         if(isset($_GET["action"])) {
@@ -63,6 +67,10 @@ session_start();
                         echo "<h2>Buch suchen</h2>";
                         include("control/searchBook.php");
                         break;
+                    case "addc":
+                        echo "<h2>Exemplar hinzufügen</h2>";
+                        include("control/addCopy.php");
+                        break;
                 }
             }
             echo "</div>";
@@ -82,6 +90,9 @@ session_start();
         }
         function search() {
             window.location.href = "main.php?action=search";
+        }
+        function addc() {
+            window.location.href = "main.php?action=addc";
         }
     </script>
 
