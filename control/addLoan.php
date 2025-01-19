@@ -34,5 +34,5 @@ if(isset($_POST["cid"])) {
     $stmt->execute([$_POST["cid"]]);
     echo "<p style='color: green;'>Buch ausgeliehen!</p>";
     $_SESSION["bid"] = null;
-    echo "<script>alert('Buch ausgeliehen!');window.location.href='main.php?action=listb';</script>";
+    echo "<script>alert('Buch ausgeliehen!');window.location.href='main.php?action=list';</script>";
 }
