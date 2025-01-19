@@ -27,28 +27,82 @@ session_start();
     <div style="margin-left: 10px;">
         <?php
         if(!isset($_SESSION["uid"])) {
-            echo "<a href='main.php?action=login'>Login</a>";
+            echo "<a href='main.php?action=login'>Anmelden</a><br>";
         }
         else {
-            echo "<span style='color: green;'>Angemeldet als: ".$_SESSION["uname"]."</span><br>";
-            echo "<a href='main.php?action=logout'>Logout</a>";
+            echo "<span style='color: green;'>Angemeldet als: " . $_SESSION["uname"] . "</span><br>";
+            echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
+            echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button>";
+            echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=search()>Nach Buch suchen</button><br><br>";
+            if($_SESSION["power"] <= 1) {
+                echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button>";
+                echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=addc()>Exemplar hinzufügen</button><br><br>";
+            }
+
+        }
+
+        if(isset($_GET["action"])) {
+            echo "<div style='border: 1px solid black; padding: 10px; margin-right: 10px;'>";
+            switch($_GET["action"]) {
+                case "":
+                    break;
+                case "login":
+                    include("control/login.php");
+                    break;
+                case "logout":
+                    include("control/logout.php");
+                    break;
+            }
+            if(isset($_SESSION["uid"])) {
+                switch($_GET["action"]) {
+                    case "list":
+                        echo "<h2>Alle Bücher</h2>";
+                        include("control/listBooks.php");
+                        break;
+                    case "addb":
+                        echo "<h2>Buch zu Bestand hinzufügen</h2>";
+                        include("control/addBook.php");
+                        break;
+                    case "search":
+                        echo "<h2>Buch suchen</h2>";
+                        include("control/searchBook.php");
+                        break;
+                    case "addc":
+                        echo "<h2>Exemplar hinzufügen</h2>";
+                        include("control/addCopy.php");
+                        break;
+                    case "addl":
+                        echo "<h2>Ausleihen</h2>";
+                        $_SESSION["bid"] = $_GET["bid"];
+                        include("control/addLoan.php");
+                        break;
+                }
+            }
+            echo "</div>";
         }
         ?>
-        
     </div>
-    <?php
-    if(isset($_GET["action"])) {
-        switch($_GET["action"]) {
-            case "":
-                break;
-            case "login":
-                include("login.php");
-                break;
-            case "logout":
-                include("logout.php");
-                break;
+
+    <script>
+        function list() {
+            window.location.href = "main.php?action=list";
         }
-    }
+        function add() {
+            window.location.href = "main.php?action=addb";
+        }
+        function logout() {
+            window.location.href = "main.php?action=logout";
+        }
+        function search() {
+            window.location.href = "main.php?action=search";
+        }
+        function addc() {
+            window.location.href = "main.php?action=addc";
+        }
+    </script>
+
+    <?php
+
     ?>
 </body>
 </html>
