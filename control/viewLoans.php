@@ -33,7 +33,7 @@ function openLoans() {
 
     $sql = "SELECT * FROM loans INNER JOIN copy ON copy.cid = loans.lcid
     INNER JOIN books ON books.bid = copy.bid 
-    INNER JOIN user ON user.uid = loans.luid WHERE returned = 0 ORDER BY user.uid";
+    INNER JOIN user ON user.uid = loans.luid WHERE returned = 0 ORDER BY stop DESC";
     $result = $conn->query($sql);
     echo "<table class='table table-striped'>";
     echo "<tr><th>Benutzer</th><th>Buch</th><th>Ausleihdatum</th><th>Rückgabedatum</th><th>Zurückgegeben</th>

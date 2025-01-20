@@ -28,6 +28,7 @@ session_start();
         <?php
         if(!isset($_SESSION["uid"])) {
             echo "<a href='main.php?action=login'>Anmelden</a><br>";
+            echo "<a href='main.php?action=signup'>Registrieren als Nutzer</a>";
         }
         else {
             echo "<span style='color: green;'>Angemeldet als: " . $_SESSION["uname"] . "</span><br>";
@@ -53,6 +54,9 @@ session_start();
                     break;
                 case "logout":
                     include("control/logout.php");
+                    break;
+                case "signup":
+                    include("control/signup.php");
                     break;
             }
             if(isset($_SESSION["uid"])) {
