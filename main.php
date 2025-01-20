@@ -21,9 +21,14 @@ session_start();
     </style>
 </head>
 <body>
-    <a href="main.php" style="color: black;">
-        <h1>biblio Bibliothek-Verwaltungsprogramm</h1>
-    </a>
+    <h1>
+        <span>
+            <a href="main.php" style="color: black;">biblio Bibliothek-Verwaltungsprogramm</a>
+        </span>
+        <span style="text-align: right; float: right; margin-right: 10px;">
+            <a href="help.php" style="color: black;">Hilfe</a>
+        </span>
+    </h1>
     <div style="margin-left: 10px;">
         <?php
         if(!isset($_SESSION["uid"])) {
