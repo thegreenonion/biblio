@@ -26,7 +26,7 @@ echo "<button class='btn btn-success' type='submit'>Ausleihen</button>";
 echo "</form>";
 
 if(isset($_POST["cid"])) {
-    $sql = "INSERT INTO loans (luid, lcid, start, stop) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO loans (luid, lcid, start, stop, returned) VALUES (?,?,?,?,0)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$_SESSION["uid"], $_POST["cid"], date("Y-m-d"), date("Y-m-d", strtotime("+14 days"))]);
     $sql = "UPDATE copy SET avail = 0 WHERE cid = ?";
