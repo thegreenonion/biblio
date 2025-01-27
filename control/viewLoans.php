@@ -109,7 +109,8 @@ if(isset($_POST["lid"])) {
         echo "<p style='color: red;'>Vorgang nicht gestattet!</p>";
         exit();
     }
-    $sql = "UPDATE loans SET returned = 1 WHERE lid = ?; UPDATE copy SET avail = 1 WHERE cid = (SELECT lcid FROM loans WHERE lid = ?)";
+    $sql = "UPDATE loans SET returned = 1 WHERE lid = ?;
+    UPDATE copy SET avail = 1 WHERE cid = (SELECT lcid FROM loans WHERE lid = ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$_POST["lid"], $_POST["lid"]]);
     $_SESSION["a"] = "open";

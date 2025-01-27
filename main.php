@@ -133,3 +133,17 @@ session_start();
     ?>
 </body>
 </html>
+<footer class="text-center mt-4" style="position: fixed; bottom: 0; width: 100%; background-color: white;">
+    <p>
+        <span>
+            &copy;<?php echo date("Y"); ?> thegreenonion. Alle Rechte vorbehalten.
+        </span>
+        <br>
+        <span>
+            <a href="https://github.com/thegreenonion/biblio">GitHub Repo</a>
+        </span>
+        <span style="margin-left: 20px;">
+            <a href="https://github.com/thegreenonion">thegreenonion (GitHub)</a>
+        </span>
+    </p>
+</footer>
