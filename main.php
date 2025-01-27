@@ -40,6 +40,7 @@ session_start();
             echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
             echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button>";
             echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=search()>Nach Buch suchen</button><br><br>";
+            echo "<button class='btn btn-primary' onclick='window.location.href=\"main.php?action=listownl\"'>Meine Ausleihen</button> <br><br>";
             if($_SESSION["power"] <= 1) {
                 echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button>";
                 echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=addc()>Exemplar hinzufügen</button><br><br>";
@@ -95,6 +96,11 @@ session_start();
                     case "listol":
                         echo "<h2>Offene Ausleihen:</h2>";
                         $_SESSION["a"] = "open";
+                        include("control/viewLoans.php");
+                        break;
+                    case "listownl":
+                        echo "<h2>Meine Ausleihen:</h2>";
+                        $_SESSION["a"] = "own";
                         include("control/viewLoans.php");
                         break;
                 }
