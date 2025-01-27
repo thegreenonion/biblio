@@ -40,12 +40,14 @@ session_start();
             echo "<button class='btn btn-danger' onclick='logout()'>Abmelden</button><br><br>";
             echo "<button class='btn btn-primary' onclick=list()>Alle Bücher</button>";
             echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=search()>Nach Buch suchen</button><br><br>";
-            echo "<button class='btn btn-primary' onclick='window.location.href=\"main.php?action=listownl\"'>Meine Ausleihen</button> <br><br>";
             if($_SESSION["power"] <= 1) {
                 echo "<button class='btn btn-primary' onclick=add()>Buch hinzufügen</button>";
                 echo "<button style='margin-left: 20px' class='btn btn-primary' onclick=addc()>Exemplar hinzufügen</button><br><br>";
                 echo "<button class='btn btn-primary' onclick='window.location.href=\"main.php?action=listl\"'>Alle Ausleihen</button>";
                 echo "<button style='margin-left: 20px' class='btn btn-primary' onclick='window.location.href=\"main.php?action=listol\"'>Offene Ausleihen</button><br><br>";
+            }
+            else {
+                echo "<button class='btn btn-primary' onclick='window.location.href=\"main.php?action=listownl\"'>Meine Ausleihen</button> <br><br>";
             }
 
         }
